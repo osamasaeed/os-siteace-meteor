@@ -1,0 +1,81 @@
+/* CSS declarations go here */
+.hidden_div{
+	display:none;
+}
+body{
+	background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.title{
+	font-size:2em;
+	font-weight:2em;
+	text-overflow:hidden;
+}
+.description{
+	text-overflow:hidden;
+	margin: 5px 212px -26px;
+}
+
+.item_img{
+	border: 8px solid #eee;
+}
+.items{
+	border-radius: 10px;
+    background-color: rgba(245, 245, 245, 0.78);
+}
+
+ #login-buttons {
+display: -webkit-box;
+}
+ 
+.login-link-text{
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	margin: 7px 62px;
+}
+.login-link-text:hover{
+	 background-color: lightgrey;
+}
+
+
+
+.easy-search-input {
+    width: 88%;
+    height: 51px;
+    font-size: 17px;
+    padding: 5px 26px;
+	border-radius:10px;
+}
+.glyphicon-refresh-animate {
+    -animation: spin .7s infinite linear;
+    -webkit-animation: spin2 .7s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
+}

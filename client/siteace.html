@@ -1,0 +1,169 @@
+<head>
+  <title>siteace</title>
+</head>
+
+<body>
+</body>
+
+<template name="ApplicationLayout">
+
+  
+	{{> yield "navbar"}}
+	{{> yield "web_add_form"}}
+	{{> yield "main"}}
+	{{> yield "commentbox"}}
+	
+  
+	
+</template>
+
+<template name="welcome">
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>Welcome to Site Ace!</h1>
+		<a href="/dashboard" class="btn btn-info">ENTER</a>
+		<br/>
+		<p> developed By OSama</p>
+	</div>
+</div>
+</template>
+
+
+<template name="commentbox">
+<div class="container" >
+	<div class="comment-section">
+		{{> commentsBox id=_id}}
+	</div>
+</div>
+</template>
+
+<template name="navbar">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+
+          <a class="navbar-brand" href="#">Site Ace</a>
+		  	<span class="loginButtons">
+		  {{> loginButtons align="left" attributes=inputAttributes}}
+			</span>
+        </div>
+        
+      </div>
+    </nav>
+
+<br/>
+<br/>
+<br/>
+</template>
+
+<template name="website_form">
+<div class="container">
+	<a class="btn btn-default js-toggle-website-form" href="#">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+	<div id="website_form" class="hidden_div">
+		<form class="js-save-website-form">
+		  <div class="form-group">
+		    <label for="url">Site address</label>
+		    <input type="text" class="form-control" id="url" name="url" placeholder="http://www.mysite.com" required>
+		  </div>
+
+		  <button type="submit" class="btn btn-default" id="web_submit" disabled><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate" id="refresh_icon" style="display:none;"></span> Submit</button>
+		</form>
+		<div class="alert alert-danger" role="alert" id="alert" style="display:none;"><strong>Sorry!</strong>{{alertMsg}}</div>
+		<div class="alert alert-success" role="alert" id="alert-success" style="display:none;"><strong>Done!</strong> webpage has been added succesfully</div>
+	</div>
+	<br/>
+	{{> instance_item}}
+	<br/>
+	
+	</div>
+</template>
+
+<!-- template that displays several website items -->
+<template name="website_list">
+
+
+
+<br/>
+<div class="container">
+<!-- <div id="loading"><img src="loadingfb.gif" /> </div> -->
+	{{> EasySearch.Input index=webIndex attributes=inputAttributes }}
+	
+	<ol>
+	{{#EasySearch.Each index=webIndex }}
+	<br/>
+	{{>website_item}}
+	{{/EasySearch.Each}}
+	</ol>
+	</div>
+</template>
+
+<template name="web_detail">
+<div class="container">
+<div class="page-header">
+<h1><a href="{{url}}" target="_blank">{{title}}</a></h1>
+</div>
+
+<div class="bs-callout bs-callout-info">
+<p><a href="/dashboard"> back </a></p>
+<h4> Detail</h4>
+<p>{{description}}</p>
+<br/>
+<p>{{getUser createdBy}}</p>
+<p>{{createdOn}}</p>
+
+</div>
+
+</div>
+
+</template>
+
+<!-- template that displays individual website entries -->
+<template name="website_item">
+<li>
+
+<div class="media items">
+ <div class="media-left item_img">
+ <a href="/dashboard/web/{{_id}}"> <img class="media-object" data-src="holder.js/64x64" alt="{{title}}" src="{{image}}" data-holder-rendered="true" style="width: 188px;height: 150px;"> </a> 
+ </div>
+ <div class="media-body"> 
+ <a href="/dashboard/web/{{_id}}"> <h2 class="media-heading">{{title}}</h2></a>
+ <p><em>{{description}}</em></p> 
+ <br/>
+ <p> by : {{getUser createdBy}}</p>
+</div>
+ </div>
+
+	<div class="btn-group btn-group-sm" role="group">
+	<a href="#" class="btn btn-default js-upvote">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+	</a>
+	<a href="#" class="btn btn-default js-downvote">
+		<span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+	</a>
+	</div>
+	<div class="btn-group btn-group-sm" role="group">
+	<span class="btn btn-success">{{upvote}}</span>
+	<span class="btn btn-danger">{{downvote}}</span>
+	</div>
+	
+	<!-- you will be putting your up and down vote buttons in here! -->
+</li>
+</template>
+
+<template name="instance_item">
+
+<div class="media items" id="instance_item" style="display:none">
+ <div class="media-left item_img">
+ <img class="media-object" data-src="holder.js/64x64" alt="{{title}}" src="{{image}}" data-holder-rendered="true" style="width: 188px;height: 150px;">
+ </div>
+ <div class="media-body"> 
+<h2 class="media-heading">{{title}}</h2>
+ <p><em>{{description}}</em></p> 
+</div>
+ </div>
+	
+</template>
